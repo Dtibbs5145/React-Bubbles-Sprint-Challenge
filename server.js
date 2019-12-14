@@ -102,7 +102,7 @@ function authenticator(req, res, next) {
 
 app.post("/api/login", (req, res) => {
   const { username, password } = req.body;
-  if (username === "Lambda School" && password === "i<3Lambd4") {
+  if (username === "Joe" && password === "joe") {
     req.loggedIn = true;
     setTimeout(() => {
       res.status(200).json({
@@ -110,9 +110,10 @@ app.post("/api/login", (req, res) => {
       });
     }, 1000);
   } else {
+    console.log(username, password)
     res
       .status(403)
-      .json({ error: "Username or Password incorrect. Please see Readme" });
+      .json({ error: `${username} or ${password} incorrect. Please see Readme` });
   }
 });
 
